@@ -9,4 +9,6 @@ import com.shorex.entity.AdminUser;
 public interface AdminUserRepository extends JpaRepository<AdminUser, Long> {
 
     Optional<AdminUser> findByUsernameAndActiveTrue(String username);
+
+    Optional<AdminUser> findByUsername(String username);
 }

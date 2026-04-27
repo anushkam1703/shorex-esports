@@ -14,7 +14,7 @@ function Home() {
         <div className="premium-hero-card">
           <img src={logo} alt="Shorex Esports" className="hero-logo" />
 
-          <h1>Shorex- Where Every Click Counts</h1>
+          <h1>ShoreX- Where Every Click Counts</h1>
 
           <p className="premium-hero-text">
             Premium PC gaming experience with RTX powered systems, 300Hz displays,

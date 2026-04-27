@@ -11,7 +11,7 @@ function Navbar() {
       {/* LEFT - BRAND */}
       <Link to="/" className="nav-brand">
         <img src={logo} alt="Shorex" className="logo-img" />
-        <span className="brand-text">Shorex Esports</span>
+        <span className="brand-text">ShoreX Esports</span>
       </Link>
 
       {/* RIGHT - LINKS */}

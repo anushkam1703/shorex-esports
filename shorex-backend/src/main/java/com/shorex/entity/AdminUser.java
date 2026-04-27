@@ -13,7 +13,7 @@ public class AdminUser {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false ,length = 100)
     private String password;
 
     private Boolean active = true;

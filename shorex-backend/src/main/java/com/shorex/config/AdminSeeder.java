@@ -17,20 +17,20 @@ public class AdminSeeder implements CommandLineRunner {
         this.adminUserRepository = adminUserRepository;
         this.passwordEncoder = passwordEncoder;
     }
-    
-    
 
     @Override
     public void run(String... args) {
-    	System.out.println("AdminSeeder is running...");
-        if (adminUserRepository.findByUsernameAndActiveTrue("SahilAnu").isEmpty()) {
-            AdminUser admin = new AdminUser();
-            admin.setUsername("SahilAnu");
-            admin.setPassword(passwordEncoder.encode("997@SahilAnu"));
-            admin.setActive(true);
-            adminUserRepository.save(admin);
+        System.out.println("AdminSeeder is running...");
 
-            System.out.println("Default admin created successfully");
-        }
+        AdminUser admin = adminUserRepository.findByUsername("SahilAnu")
+                .orElse(new AdminUser());
+
+        admin.setUsername("SahilAnu");
+        admin.setPassword(passwordEncoder.encode("997@SahilAnu"));
+        admin.setActive(true);
+
+        adminUserRepository.save(admin);
+
+        System.out.println("Admin user created/updated successfully");
     }
 }

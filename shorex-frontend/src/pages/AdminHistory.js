@@ -63,25 +63,27 @@ function AdminHistory() {
     return "Not assigned";
   };
 
-  const filteredBookings = useMemo(() => {
-    return bookings.filter((b) => {
-      if (b.bookingDate !== selectedDate) return false;
+ const filteredBookings = useMemo(() => {
+  return bookings.filter((b) => {
+    const bookingDateOnly = String(b.bookingDate).split("T")[0];
 
-      const text = `
-        ${b.id}
-        ${b.bookingType}
-        ${b.fullName}
-        ${b.username}
-        ${b.phone}
-        ${b.selectedGame}
-        ${b.planName}
-        ${b.status}
-        ${getPcNumbers(b)}
-      `.toLowerCase();
+    if (bookingDateOnly !== selectedDate) return false;
 
-      return text.includes(search.toLowerCase());
-    });
-  }, [bookings, selectedDate, search]);
+    const text = `
+      ${b.id}
+      ${b.bookingType}
+      ${b.fullName}
+      ${b.username}
+      ${b.phone}
+      ${b.selectedGame}
+      ${b.planName}
+      ${b.status}
+      ${getPcNumbers(b)}
+    `.toLowerCase();
+
+    return text.includes(search.toLowerCase());
+  });
+}, [bookings, selectedDate, search]);
 
   const totalRevenue = filteredBookings
     .filter((b) => b.status !== "CANCELLED")
@@ -181,11 +183,10 @@ function AdminHistory() {
       {/* Filters */}
       <div className="admin-filter-bar">
         <input
-          type="date"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-        />
-
+  type="date"
+  value={selectedDate}
+  onChange={(e) => setSelectedDate(e.target.value)}
+/>
         <input
           type="text"
           placeholder="Search..."

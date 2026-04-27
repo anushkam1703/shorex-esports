@@ -17,7 +17,7 @@ function Home() {
           <h1>Shorex- Where Every Click Counts</h1>
 
           <p className="premium-hero-text">
-            Premium PC gaming experience with RTX powered systems, 240Hz displays,
+            Premium PC gaming experience with RTX powered systems, 300Hz displays,
             pro gaming accessories, and a neon arena built for squads, solo players,
             and competitive gamers.
           </p>
@@ -54,7 +54,7 @@ function Home() {
 
           <div className="feature-card">
             <span>🖥️</span>
-            <h3>240Hz Display</h3>
+            <h3>300Hz Display</h3>
             <p>Fast refresh rate displays for responsive gameplay.</p>
           </div>
 

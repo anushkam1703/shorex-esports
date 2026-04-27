@@ -1,4 +1,4 @@
-package com.shorex.security;
+package com.shorex.config;
 
 import java.util.List;
 

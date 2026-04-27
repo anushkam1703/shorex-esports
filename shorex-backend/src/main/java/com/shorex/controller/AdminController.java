@@ -65,10 +65,16 @@ public class AdminController {
         AdminUser admin = adminUserRepository.findByUsernameAndActiveTrue(username)
                 .orElseThrow(() -> new RuntimeException("Invalid credentials"));
 
+        System.out.println("INPUT USERNAME = [" + username + "]");
+        System.out.println("INPUT PASSWORD = [" + password + "]");
+        System.out.println("DB USERNAME = [" + admin.getUsername() + "]");
+        System.out.println("DB HASH = [" + admin.getPassword() + "]");
+        System.out.println("DB HASH LENGTH = " + admin.getPassword().length());
+        System.out.println("MATCH RESULT = " + passwordEncoder.matches(password, admin.getPassword()));
+
         if (!passwordEncoder.matches(password, admin.getPassword())) {
             throw new RuntimeException("Invalid credentials");
         }
-
         String token = jwtUtil.generateToken(username);
 
         return Map.of("token", token);

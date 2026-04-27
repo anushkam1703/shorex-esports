@@ -12,18 +12,28 @@ function AdminLogin() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    try {
-      const res = await api.post("/admin/login", form);
+  try {
+    const res = await api.post("/admin/login", form);
 
-      localStorage.setItem("adminToken", res.data.token);
-      navigate("/admin");
-    } catch (err) {
-      setError("Invalid admin username or password");
+    console.log("LOGIN RESPONSE:", res.data);
+
+    const token = res.data?.token;
+
+    if (!token) {
+      setError("Login successful but token not received");
+      return;
     }
-  };
+
+    localStorage.setItem("adminToken", token);
+    navigate("/admin");
+  } catch (err) {
+    console.error("LOGIN ERROR:", err);
+    setError(err.response?.data?.message || "Invalid admin username or password");
+  }
+};
 
   return (
     <div className="page contact-page">
